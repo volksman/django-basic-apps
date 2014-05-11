@@ -10,7 +10,7 @@ class PostArchive(template.Node):
         self.var_name = var_name
 
     def render(self, context):
-        dates = Post.objects.published().dates('publish', 'month', order='DESC')
+        dates = Post.objects.published().datetimes('publish', 'month', order='DESC')
         if dates:
             context[self.var_name] = dates
         return ''
